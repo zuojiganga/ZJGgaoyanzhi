@@ -15,7 +15,7 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     // 超时时间
     manager.requestSerializer.timeoutInterval = kTimeOutInterval;
-    
+    afdsadsfasdfasdf;
     // 声明上传的是json格式的参数，需要你和后台约定好，不然会出现后台无法获取到你上传的参数问题
     manager.requestSerializer = [AFHTTPRequestSerializer serializer]; // 上传普通格式
     //    manager.requestSerializer = [AFJSONRequestSerializer serializer]; // 上传JSON格式
@@ -131,6 +131,8 @@ NSLog(@";asdjfk;lsaj;lkfjas;ldkfj;alskdjf;lk: $*******    %@",dic.description);
 
 - (void)uploadWithUser:(NSString *)userId UrlString:(NSString *)urlString upImg:(UIImage *)upImg
 {
+    
+    
     // 创建管理者对象
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     // 参数
@@ -138,6 +140,7 @@ NSLog(@";asdjfk;lsaj;lkfjas;ldkfj;alskdjf;lk: $*******    %@",dic.description);
     [manager POST:urlString parameters:param constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         /******** 1.上传已经获取到的img *******/
         // 把图片转换成data
+        
         NSData *data = UIImagePNGRepresentation(upImg);
         // 拼接数据到请求题中
         [formData appendPartWithFileData:data name:@"file" fileName:@"123.png" mimeType:@"image/png"];
@@ -146,10 +149,12 @@ NSLog(@";asdjfk;lsaj;lkfjas;ldkfj;alskdjf;lk: $*******    %@",dic.description);
         
     } progress:^(NSProgress * _Nonnull uploadProgress) {
         // 打印上传进度
+        
         NSLog(@"%lf",1.0 *uploadProgress.completedUnitCount / uploadProgress.totalUnitCount);
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         //请求成功
         NSLog(@"请求成功：%@",responseObject);
+        
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         //请求失败
@@ -194,7 +199,7 @@ NSLog(@";asdjfk;lsaj;lkfjas;ldkfj;alskdjf;lk: $*******    %@",dic.description);
             default:
                 break;
         }
-        
+    
     }] ;  
 }  
 
